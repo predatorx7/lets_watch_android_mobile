@@ -1,0 +1,3 @@
+package com.magnificsoftware.letswatch.data_class.plain.show_details
+
+interface ShowDetails

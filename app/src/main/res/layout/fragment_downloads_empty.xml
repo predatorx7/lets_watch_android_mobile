@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+    <LinearLayout
+        android:id="@+id/iconDownloads"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_marginBottom="@dimen/keyline_7"
+        android:gravity="center"
+        android:maxWidth="200sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/downloads_icon"
+            android:padding="@dimen/keyline_2"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_fluent_add_28_regular"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/downloadsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:paddingHorizontal="@dimen/keyline_7"
+        android:text="@string/movies_and_shows_that_you_download_will_appear_here"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.LetsWatchTheme.Body2"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconDownloads" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/downloadToWatchLaterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/download_to_watch_offline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/downloadsText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

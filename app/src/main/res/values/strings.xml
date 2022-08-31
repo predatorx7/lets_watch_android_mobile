@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LetsWatch</string>
+    <string name="authenticator_account_type">com.magnificsoftware.letswatch.account</string>
+    <string name="activity_video_player_title">Video Player</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="downloadsTab">DownloadsTab</string>
+    <string name="homeTab">HomeTab</string>
+    <string name="moreTab">MoreTab</string>
+    <string name="searchTab">SearchTab</string>
+    <string name="watchlistFragment">WatchList Fragment</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="downloads">Downloads</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="remove_watchlist">Remove from\nWatchlist</string>
+    <string name="more">More</string>
+
+    <!-- Brightcove a/c details -->
+    <string name="video_details_name">NAME</string>
+    <string name="video_details_description">DESCRIPTION</string>
+    <string name="video_details_long_description">LONG DESCRIPTION</string>
+
+    <!-- Brightcove button's icon -->
+    <!-- Use the Font Awesome fa-step-backward icon for the rewind
+         button face. -->
+    <string name="brightcove_controls_rewind">&#xf048;</string>
+    <!-- Use the Font Awesome fa-step-forward icon for the rewind
+         button face. -->
+    <string name="brightcove_controls_fast_forward">&#xf051;</string>
+    <string name="show_cover_image">Show Cover Image</string>
+    <string name="appTitleLets">LETS</string>
+    <string name="AppTitleWatch">WATCH</string>
+    <string name="play">Play</string>
+    <string name="application_logo">Application logo</string>
+    <string name="movies">Movies</string>
+    <string name="shows">Shows</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+    <string name="trailer">Trailer</string>
+    <string name="more_like_this">More Like This</string>
+    <string name="loginscreen_explore_movies_series_and_more">Explore movies, series and more</string>
+    <string name="Form_edittext_hint_email">Email Address</string>
+    <string name="Form_edittext_hint_mobile">Mobile Number</string>
+    <string name="Form_edittext_hint_pass">Password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="don_t_have_an_account">Don\'t have an account? </string>
+    <string name="log_in">LOG IN</string>
+    <string name="logging_in">LOGGING IN</string>
+    <string name="log_in_signupscreen">Log in</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="continue_message">Continue</string>
+    <string name="signing_up">Signing up</string>
+    <string name="signupscreen_tnc">By proceeding, you agree to out Terms of use, Privacy Policy and that you are over 18.</string>
+    <string name="sign_up_to_subscribe_n14_day_free_trial">Sign-up to Subscribe\n14 Day Free Trial</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="splash_background">Splash background</string>
+    <string name="splash_foreground">Splash Foreground</string>
+    <string name="episodes">"Episodes %s"</string>
+    <string name="season">Season %s</string>
+    <string name="hint_select_season">select season</string>
+    <string name="browse_to_watch_later">Browse To Watch Later</string>
+    <string name="add_your_favourite_movies_and_shows_to_your_watchlist">Add your Favourite Movies and Shows to your Watchlist</string>
+    <string name="watchlist_icon">Watchlist icon</string>
+    <string name="version_information">Version name %1$s (%2$d) %3$s</string>
+    <string name="arrow_contentdesc"><![CDATA[>]]></string>
+    <string name="log_out">Log out</string>
+    <string name="activate_tv">Activate TV</string>
+    <string name="help">Help</string>
+    <string name="legal">Legal</string>
+    <string name="parental_control">Parental Control</string>
+    <string name="subscription_management">Subscription Management</string>
+    <string name="continue_watching">Continue Watching</string>
+    <string name="download_preferences">Download Preferences</string>
+    <string name="account">Account</string>
+    <string name="searchviewhinttext">Movies, shows, people, genres…</string>
+    <string name="find_titles_related_to">Find titles related to</string>
+    <string name="top_results">Top results</string>
+    <string name="loading">Loading....</string>
+    <string name="movies_and_shows_that_you_download_will_appear_here">Movies and Shows that you download will appear here</string>
+    <string name="downloads_icon">Downloads Icon</string>
+    <string name="download_to_watch_offline">Download To Watch Offline</string>
+    <string name="this_is_a_line">This is a line</string>
+    <string name="verify_otp">Verify</string>
+    <string name="verifying">Verifying</string>
+    <string name="otp">OTP</string>
+    <string name="verify_your_account">Verify your account</string>
+    <string name="enter_otp_sent_to">Enter OTP sent to %1$s</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="video_unavailable">Coming soon</string>
+    <string name="media_url_mp3">https://storage.googleapis.com/exoplayer-test-media-0/play.mp3</string>
+</resources>

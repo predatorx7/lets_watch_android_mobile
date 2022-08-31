@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- # Color palette-->
+
+    <!--Color primary (dark) -->
+    <color name="grey_900">#212121</color>
+    <color name="gray_semi_trans_900">#C8000000</color>
+
+    <!--Color primary variant (dark) -->
+    <color name="grey_800">#424242</color>
+
+    <!-- Color background  -->
+    <!-- @color/black -->
+
+    <!-- Color secondary -->
+    <color name="red_600">#e53935</color>
+
+    <!-- secondary color variant -->
+    <color name="red_100">#FFCDD2</color>
+    <color name="red_900">#BF360C</color>
+
+    <!-- background color -->
+    <!-- @color/black -->
+
+    <!-- surface color -->
+    <!-- @color/black_800 -->
+
+    <!-- error color -->
+    <!-- @color/white -->
+
+    <!-- Color on primary -->
+    <color name="red_a200">#FF5252</color>
+
+    <!-- Color on secondary -->
+    <!-- @color/black -->
+
+    <!-- Color on secondary -->
+    <!-- @color/white -->
+
+    <!-- Color on surface -->
+    <!-- @color/white -->
+
+    <!-- Color on error -->
+    <!-- @color/white -->
+
+    <!-- # Other colors -->
+    <color name="purple_200">#bb86fc</color>
+    <color name="purple_500">#6200ee</color>
+    <color name="purple_600">#4b01d0</color>
+    <color name="purple_700">#3700b3</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="red_200">#cf6679</color>
+    <color name="red_800">#C62828</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_600">#757575</color>
+    <color name="black_800">#121212</color>
+    <color name="black">#FF000000</color>
+    <color name="grey_100">#FFF5F5F5</color>
+    <color name="transparent">#00000000</color>
+</resources>

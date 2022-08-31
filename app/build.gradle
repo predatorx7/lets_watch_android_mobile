@@ -1,0 +1,227 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+def versionNameFile = file('../version')
+def versionCodeFile = file('../version-code')
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('../secrets/key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+// Ignore 'Cannot resolve symbol 'BuildVersionIdentifier' error related to this
+def buildVersionId = new BuildVersionIdentifier()
+
+def letsWatchVersionName = buildVersionId.getVersionName(versionNameFile)
+
+// This generates version code based on date and the nth build on date.
+// Change value in the last argument (versionCodeOverride) to override build number.
+// For example: ...00, ...01, ...02, etc.
+def letsWatchVersionCode = buildVersionId.getVersionCode(versionCodeFile)
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.magnificsoftware.letswatch"
+        // Cannot support 19 because
+        // - com.microsoft.design:fluent-system-icons:1.1.102 uses minSdkVersion 21
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode letsWatchVersionCode
+        versionName letsWatchVersionName
+
+        // Uncomment below line when references exceed 65,536 methods
+        // 46088 method references on 19 May, 2021
+        // multiDexEnabled true
+
+        // Instrumentation test runners
+        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.magnificsoftware.letswatch.CustomTestRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
+    }
+
+    lintOptions {
+        disable "NullSafeMutableLiveData"
+    }
+
+    buildFeatures {
+        // Add attribute: `tools:viewBindingIgnore="true"` to the root of layout file
+        // if you want it to be ignored while generating binding classes
+        viewBinding true
+    }
+
+    signingConfigs {
+
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+
+            // Optional, specify signing versions used
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        /**
+         * Use this as Release Candidate
+          */
+        release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+
+        /**
+         * Everything is same as release except for debuggable which is true.
+         *
+         * Use this for testing before release to
+         * ensure that changes made don't crash the app on startup after installation when a
+         * previous version with same signature and applicationId exists (Backwards compatibility).
+         *
+         * This must use only production APIs
+         *
+         * TLDR: Build this if they request app with production APIs
+         */
+        prerelease {
+            initWith release
+            debuggable true
+        }
+
+        /**
+         * For checking logs and analysis. This is also meant to be shared with other team members for testing.
+         * It has a different application suffix to keep this separate from the release versions.
+         *
+         * This must only use devel APIs.
+         *
+         * TLDR: Build this if they request app with devel APIs
+         */
+        development {
+            initWith release
+            debuggable true
+            applicationIdSuffix ".dev"
+        }
+
+        /**
+         * For checking logs and analysis on different APIs and configs. This is not meant to be shared with other team members for testing.
+         *
+         * Deliver this with either devel or prod APIs
+         */
+        master {
+            initWith release
+            debuggable true
+            // will have option to change APIs when we have more than one :/
+            applicationIdSuffix System.getenv("_AVK_USE_APPIDSUFFIX") ? ".dev" : ""
+        }
+    }
+
+    archivesBaseName = "letsWatch-${letsWatchVersionCode}"
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Android dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation_ktx"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation_ktx"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation "androidx.navigation:navigation-fragment-ktx:$androidx_navigation_ktx"
+    implementation "androidx.navigation:navigation-ui-ktx:$androidx_navigation_ktx"
+    implementation 'androidx.transition:transition:1.4.1'
+
+    // Room for local storage
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // Retrofit for remote http requests
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit-mock:$retrofit_version"
+
+    // For image downloading and caching
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    // backport of completable future APIs
+    implementation 'net.sourceforge.streamsupport:android-retrofuture:1.7.3'
+
+    // Hilt DI
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // Fluent Icons
+    implementation 'com.microsoft.design:fluent-system-icons:1.1.102'
+
+    // Uncomment below line when references exceed 65,536 methods
+    // implementation "androidx.multidex:multidex:2.0.1"
+
+    // For carousel shown on homepage
+    implementation 'com.synnapps:carouselview:0.1.5'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Hilt testing dependency
+    // For instrumentation tests
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // Exo player
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+
+    // For logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+}
+
+kapt {
+    correctErrorTypes true
+}

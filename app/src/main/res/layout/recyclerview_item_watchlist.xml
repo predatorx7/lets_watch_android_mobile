@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><!-- TODO: Convert to a flatter organization with ConstrainLayout-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/keyline_1"
+    android:paddingBottom="@dimen/keyline_3">
+
+    <ImageView
+        android:id="@+id/show_cover"
+        android:layout_width="160sp"
+        android:layout_height="90sp"
+        android:layout_gravity="center_vertical"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:contentDescription="@string/show_cover_image"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="UnusedAttribute" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/title_and_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginVertical="@dimen/keyline_1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/show_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.LetsWatchTheme.Body2"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/show_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.LetsWatchTheme.Caption"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/show_synopsis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/keyline_1"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.LetsWatchTheme.Caption"
+            android:textColor="@color/grey_300" />
+    </RelativeLayout>
+
+</LinearLayout>

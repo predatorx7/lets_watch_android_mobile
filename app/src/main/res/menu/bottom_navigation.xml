@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/HomeBottomNavbarOption"
+        android:icon="@drawable/ic_fluent_home_16_regular"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/SearchBottomNavbarOption"
+        android:icon="@drawable/ic_fluent_search_16_regular"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/DownloadsBottomNavbarOption"
+        android:icon="@drawable/ic_fluent_arrow_download_16_regular"
+        android:title="@string/downloads" />
+    <item
+        android:id="@+id/WatchlistBottomNavbarOption"
+        android:icon="@drawable/ic_fluent_add_16_regular"
+        android:title="@string/watchlist" />
+    <item
+        android:id="@+id/MoreBottomNavbarOption"
+        android:icon="@drawable/ic_fluent_line_horizontal_3_20_regular"
+        android:title="@string/more" />
+
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="108dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+
+    <!-- Follows aspect ratio of 13h:9w -->
+    <ImageView
+        android:id="@+id/movieCover"
+        android:layout_width="108dp"
+        android:layout_height="156dp"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:contentDescription="@string/show_cover_image"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/movieViewTextView"
+        style="@style/movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
